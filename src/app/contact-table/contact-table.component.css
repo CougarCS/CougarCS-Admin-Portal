@@ -1,0 +1,19 @@
+.spacer {
+    padding: 0.5rem;
+}
+
+.member-yes {
+    width: fit-content;
+    padding: 0.1rem 0.5rem;
+    border-radius: 5px;
+    background-color: rgb(20, 131, 20);
+    color: white;
+}
+
+.member-no {
+    width: fit-content;
+    padding: 0.1rem 0.5rem;
+    border-radius: 5px;
+    background-color: rgb(94, 94, 104);
+    color: white;
+}

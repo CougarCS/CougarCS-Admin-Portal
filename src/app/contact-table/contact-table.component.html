@@ -1,0 +1,58 @@
+<p-table [value]="contacts" dataKey="psid"
+    [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
+    [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="['psid','name','status','start', 'end', 'transactionHistory']">
+    
+    <ng-template pTemplate="header">
+        <tr>
+            <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    PSID 
+                    <p-columnFilter type="text" field="psid" display="menu"></p-columnFilter>
+                </div>
+            </th>
+            <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Name 
+                    <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+                </div>
+            </th>
+            <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Membership Status 
+                    <p-columnFilter type="text" field="status" display="menu"></p-columnFilter>
+                </div>
+            </th>
+            <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Membership Start
+                    <p-columnFilter type="text" field="start" display="menu"></p-columnFilter>
+                </div>
+            </th>
+            <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Membership End
+                    <p-columnFilter type="text" field="end" display="menu"></p-columnFilter>
+                </div>
+            </th>
+            <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Transaction History
+                    <p-columnFilter type="text" field="transactionHistory" display="menu"></p-columnFilter>
+                </div>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-contact>
+        <tr>
+            <td>{{contact.psid}}</td>
+            <td>{{contact.getName()}}</td>
+            <td>
+                <div [ngClass]="contact.membershipStatus ? 'member-yes' : 'member-no'"> {{contact.getMembershipStatus()}} </div>
+            </td>
+            <td>{{contact.getMembershipStart()}}</td>
+            <td>{{contact.getMembershipEnd()}}</td>
+            <td>{{contact.getTransactionHistory()}}</td>
+        </tr>
+    </ng-template>
+</p-table>
