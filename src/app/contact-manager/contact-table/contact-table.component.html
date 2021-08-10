@@ -1,50 +1,48 @@
-<p-table [value]="contacts" dataKey="psid"
+<p-table #table [value]="contacts" dataKey="psid"
     [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
-    [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [globalFilterFields]="['psid','name','status','start', 'end', 'transactionHistory']">
+    [(selection)]="selected" (onRowSelect)="onRowSelectChange($event)" (onRowUnselect)="onRowUnselectChange($event)"
+    [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
     
     <ng-template pTemplate="header">
         <tr>
+            <th style="width: 3rem">
+                <!-- <p-tableHeaderCheckbox></p-tableHeaderCheckbox> -->
+            </th>
             <th>
                 <div class="p-d-flex p-jc-between p-ai-center">
-                    PSID 
-                    <p-columnFilter type="text" field="psid" display="menu"></p-columnFilter>
+                    PSID
                 </div>
             </th>
             <th>
                 <div class="p-d-flex p-jc-between p-ai-center">
-                    Name 
-                    <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+                    Name
                 </div>
             </th>
             <th>
                 <div class="p-d-flex p-jc-between p-ai-center">
-                    Membership Status 
-                    <p-columnFilter type="text" field="status" display="menu"></p-columnFilter>
+                    Membership Status
                 </div>
             </th>
             <th>
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Membership Start
-                    <p-columnFilter type="text" field="start" display="menu"></p-columnFilter>
                 </div>
             </th>
             <th>
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Membership End
-                    <p-columnFilter type="text" field="end" display="menu"></p-columnFilter>
                 </div>
             </th>
             <th>
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Transaction History
-                    <p-columnFilter type="text" field="transactionHistory" display="menu"></p-columnFilter>
                 </div>
             </th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-contact>
         <tr>
+            <td> <p-tableCheckbox [value]="contact"></p-tableCheckbox> </td>
             <td>{{contact.psid}}</td>
             <td>{{contact.getName()}}</td>
             <td>

@@ -1,10 +1,31 @@
-<h2>Contact Manager</h2>
-
-<div>
-    <div> Size: {{ length }} </div>
-    <div> Member Count: {{ memberCount }} </div>
+<div class="tile">
+    <div class="title"> Contact Manager </div>
 </div>
 
 <div class="spacer"></div>
 
-<app-contact-table [contacts]="contacts" [length]="length" [memberCount]="memberCount"></app-contact-table>
+<div class="flex-wrapper">
+    <app-stats-panel
+        [contacts]="contacts"
+        [memberCount]="memberCount">
+    </app-stats-panel>
+
+    <div class="spacer"></div>
+    
+    <app-control-panel
+        [selected]="selected"
+        (onRefreshComplete)="onRefresh()">
+    </app-control-panel>
+</div>
+
+<div class="spacer"></div>
+
+<div class="tile">
+    <app-contact-table
+        [contacts]="contacts"
+        [selected]="selected"
+        (onRowSelectComplete)="onRowSelectChange($event)"
+        (onRowSelectComplete)="onRowUnselectChange($event)"
+        (selectedRowsData)="selected=$event">
+    </app-contact-table>
+</div>

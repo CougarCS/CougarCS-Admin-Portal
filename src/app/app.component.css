@@ -1,0 +1,28 @@
+.app {
+    padding: 2rem;
+}
+
+.spacer {
+    padding: 0.5rem;
+}
+
+.flex-wrapper {
+    display: flex;
+}
+
+.tile {
+    padding: 1rem 2rem;
+    width: fit-content;
+    background-color: white;
+    box-shadow: 2px 2px 8px;
+    line-height: 1.5;
+}
+
+.title {
+    font-size: 2rem;
+}
+
+.h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}

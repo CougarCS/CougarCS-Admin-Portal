@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 
 import { ContactsBean } from './contact.data';
-import { ApiService } from './aws.service';
+import { AuthService } from './auth.service';
 
-const BASE_URL = "https://pxgy8jxap6.execute-api.us-east-1.amazonaws.com/dev/"
+import { Config } from '../config';
 
 @Injectable({
     providedIn: 'root'
@@ -13,9 +13,9 @@ export class ContactService {
         const prefix = 'ContactService.getContact ';
         console.log(prefix + ' invoked.');
 
-        const token = await ApiService.getAccessToken();
+        const token = await AuthService.getAccessToken();
 
-        const url = BASE_URL + 'contact' + '?psid=' + psid + '&email=' + email;
+        const url = Config.API_URL + 'contact' + '?psid=' + psid + '&email=' + email;
         const options = {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` }
@@ -39,9 +39,9 @@ export class ContactService {
         const prefix = 'ContactService.getContacts ';
         console.log(prefix + ' invoked.');
 
-        const token = await ApiService.getAccessToken();
+        const token = await AuthService.getAccessToken();
 
-        const url = BASE_URL + 'contacts';
+        const url = Config.API_URL + 'contacts';
         const options = {
             method: 'GET',
             headers: {

@@ -1,0 +1,11 @@
+<div class="tile">
+    <div class="flex-wrapper">
+        <p-button label="Add" icon="pi pi-plus" iconPos="right" (onClick)="handleAddClick($event)"></p-button>
+        <div class="spacer"></div>
+        <p-button [disabled]="!selected.length" label="Modify" icon="pi pi-user-edit" iconPos="right" (onClick)="handleModifyClick($event)"></p-button>
+        <div class="spacer"></div>
+        <p-button label="Delete" icon="pi pi-trash" iconPos="right" (onClick)="handleDeleteClick($event)"></p-button>
+        <div class="spacer"></div>
+        <p-button label="Refresh" icon="pi pi-refresh" iconPos="right" (onClick)="handleRefreshClick($event)"></p-button>
+    </div>
+</div>
